@@ -148,7 +148,6 @@ def visualisation():
     select distinct ?card ?cardLabel ?meaning ?meaningLabel (COUNT(?meaning) as ?n)
     where {
       ?card a odi:DeckCard ;
-        odi:hasSuit ?suit;
         odi:hasTypology ?typology.
       ?card odi:hasName ?cardLabel.
       ?story odi:hasCard ?storyCard.
@@ -156,6 +155,8 @@ def visualisation():
       ?storyCard odi:carriesRepresentation ?representation.
       ?representation odi:hasMeaningOf ?meaning.
       ?meaning rdfs:label ?meaningLabel.
+
+      OPTIONAL {?card odi:hasSuit ?suit}
       }
       GROUP BY ?card ?cardLabel ?meaning ?meaningLabel
       """
