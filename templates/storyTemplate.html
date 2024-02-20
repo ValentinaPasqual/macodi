@@ -239,7 +239,7 @@
 
 <script type="text/javascript">
     function replaceHtmlEntities(input) {
-    return input.replace(/&#39;/g, "'");
+    return input.replace(/&#39;/g, "\'");
   }
    // Create a new network instance
    var allNodes = [
@@ -248,7 +248,7 @@
    { id:"{{res['representation2']['value']}}", label:replaceHtmlEntities("{{res['reprLabel2']['value']}}"), classLabel:replaceHtmlEntities("{{res['classLabel2']['value']}}")},
    {% endfor %}
    {% for res in cardRelationsResult %}
-   { id:"{{res['card']}}", label:"{{res['cardLabel']}}", classLabel:"Carta"},
+   { id:"{{res['card']}}", label:replaceHtmlEntities("{{res['cardLabel']}}"), classLabel:"Carta"},
    {% endfor %}
  ]
 
